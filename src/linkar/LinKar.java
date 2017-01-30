@@ -37,4 +37,5 @@ public class LinKar extends Application {
     public void test()
     {}
     
+    public void afficher() {}
 }
