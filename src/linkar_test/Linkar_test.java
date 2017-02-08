@@ -19,7 +19,7 @@ public class Linkar_test extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("linkar_test/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
         
         Scene scene = new Scene(root);
         
