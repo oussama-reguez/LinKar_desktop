@@ -32,7 +32,7 @@ public class ReclamationService implements IReclamationService {
     String sql="INSERT INTO `reclamation`(`id_membre`, `date_reclamation`, `text`) VALUES (?,?,?)";
     try {
             PreparedStatement prepared = cnx.prepareStatement(sql);
-            prepared.setInt(1,r.getMembre().getId_membre());
+            prepared.setInt(1,r.getMembre().getId_member());
             prepared.setDate(2, r.getDate_Reclamation());
             prepared.setString(3, r.getText());
            
@@ -59,7 +59,7 @@ public class ReclamationService implements IReclamationService {
        String sql="UPDATE `reclamation` SET `id_membre`=?,`date_reclamation`=?,`text`=? WHERE id_reclamation=?";
     try {
             PreparedStatement prepared = cnx.prepareStatement(sql);
-            prepared.setInt(1,r.getMembre().getId_membre());
+            prepared.setInt(1,r.getMembre().getId_member());
             prepared.setDate(2, r.getDate_Reclamation());
             prepared.setString(3, r.getText());
              prepared.setInt(4,r.getId_reclamation());
