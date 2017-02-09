@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.linkar.tn.Iservices;
+package com.linkar.tn.Iservice;
 
 import com.linkar.tn.entities.Membre;
 
