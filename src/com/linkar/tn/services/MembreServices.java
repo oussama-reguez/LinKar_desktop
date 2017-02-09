@@ -123,12 +123,12 @@ cnx=DataSource.getDataSource().getConnection();
         return m;
     }
     public List<Membre> getMembersNyName(String search){
-         String req = "select * from membre where first_name like '%?' ";
+         String req = "select * from membre where first_name like ? ";
        List<Membre> membres = new ArrayList<Membre>();
          Membre m = null;
         try {
             ps = cnx.prepareStatement(req);
-            ps.setString(0, search);
+            ps.setString(1, search+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) 
             {
