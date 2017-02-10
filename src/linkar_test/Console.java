@@ -18,7 +18,7 @@ public class Console {
      public static void main(String[] args) {
       //  launch(args);
       MembreServices m = new MembreServices();
-      List<Membre> membres = m.getMembersNyName("ouss");
+      List<Membre> membres = m.searchMembersByRole(false);
       for(Membre e : membres){
           System.err.println(e);
       }

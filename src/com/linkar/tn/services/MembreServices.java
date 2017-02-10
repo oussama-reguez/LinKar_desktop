@@ -124,12 +124,14 @@ cnx=DataSource.getDataSource().getConnection();
         }
         return m;
     }
-    public List<Membre> getMembersNyName(String search){
-         String req = "select * from membre where first_name like ? ";
+    
+    public List<Membre> searchMembersByFullName(String search){
+         String req = "select * from membre where first_name like ? or last_name like ? ";
        List<Membre> membres = new ArrayList<Membre>();
          Membre m = null;
         try {
             ps = cnx.prepareStatement(req);
+            ps.setString(1, search+"%");
             ps.setString(1, search+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) 
@@ -140,12 +142,142 @@ cnx=DataSource.getDataSource().getConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
-       
-        
     return membres;
     }
+          
+   
+        public List<String> getFirstNames(String search){
+         List<String> results = new ArrayList<String>();
+            String req = "select first_name from membre where first_name like ? ";
+       
+       
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setString(1, search+"%");
+           
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+              //  m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+             results.add(rs.getString("first_name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return results;  
+        }
+        
+        public List<String> getLastNames(String search){
+           List<String> results = new ArrayList<String>();
+            String req = "select * from membre where last_name like ? ";
+       
+       
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setString(1, search+"%");
             
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+              //  m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+             results.add(rs.getString("last_name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return results;  
+        }
+        
+         public List<String> getFullNames(String search){
+           List<String> results = new ArrayList<String>();
+            String req = "select first_name , last_name from membre where last_name like ? or first_name like ? ";
+            
+       
+       
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setString(1, search+"%");
+            ps.setString(1, search+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+              //  m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+             results.add(rs.getString("first_name")+" "+rs.getString("last_name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return results;  
+        }
+       
+        
+        
+        
+        
+    public List<Membre> searchMembersByFirstName(String search){
+         String req = "select * from membre where first_name like ?  ";
+       List<Membre> membres = new ArrayList<Membre>();
+         Membre m = null;
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setString(1, search+"%");
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+              membres.add(m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    return membres;
+    }
+       public List<Membre> searchMembersByLastName(String search){
+         String req = "select * from membre where last_name like ?  ";
+       List<Membre> membres = new ArrayList<Membre>();
+         Membre m = null;
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setString(1, search+"%");
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+              membres.add(m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    return membres;
+    }
+       
+          public List<Membre> searchMembersByRole(boolean isAdmin){
+         String req = "select * from membre where role=?  ";
+       List<Membre> membres = new ArrayList<Membre>();
+         Membre m = null;
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setBoolean(1, isAdmin);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+              membres.add(m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    return membres;
+    }
     
     
     
 }
+
+
