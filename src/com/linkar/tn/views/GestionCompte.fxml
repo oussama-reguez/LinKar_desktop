@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.views.GestionCompteController">
+   <children>
+      <VBox prefHeight="50" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <JFXTextField fx:id="txtSearch" prefHeight="25.0" prefWidth="233.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                   
+                  </JFXTextField>
+                  <Label prefHeight="25.0" prefWidth="91.0" text="Rechercher par">
+                     <padding>
+                        <Insets left="10.0" top="7.0" />
+                     </padding>
+                  </Label>
+                  <JFXComboBox fx:id="type" prefHeight="25.0" prefWidth="122.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                    
+                     <items>
+     
+    </items>
+    <value>
+        <String fx:value="NVT" />
+    </value>
+                  </JFXComboBox>
+                  <JFXButton fx:id="btnRechercher" onAction="#searchAction" style="-fx-background-color: #3498db;" text="Rechercher">
+                     <HBox.margin>
+                        <Insets left="10.0" top="7.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <VBox fx:id="vBox" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <TableView fx:id="mTable" prefHeight="400.0" prefWidth="800.0" />
+               </children></VBox>
+            <Button fx:id="btn" mnemonicParsing="false" onAction="#click" text="Button" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
