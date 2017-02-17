@@ -91,6 +91,23 @@ public class ReclamationService implements IReclamationService {
     return r;
     }
 
+    public void markReclamation(boolean mark,int id_reclamation){
+        String sql="UPDATE `reclamation` SET marked=? WHERE id_reclamation=?";
+    try {
+            PreparedStatement prepared = cnx.prepareStatement(sql);
+           prepared.setBoolean(1,mark);
+            prepared.setInt(2,id_reclamation);
+           
+           
+           
+            prepared.executeUpdate();
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    MembreServices membreService = new MembreServices();
     @Override
     public List<Reclamation> getAllReclamation() {
         String sql="select * from reclamation ";
@@ -103,7 +120,27 @@ public class ReclamationService implements IReclamationService {
            
            ResultSet rs= prepared.executeQuery();
           while (rs.next()) {
-                r = new Reclamation(rs.getInt(1),null,rs.getString(4),rs.getDate(3));
+                r = new Reclamation(rs.getInt(1),membreService.getMembre(rs.getInt(2)),rs.getString(4),rs.getDate(3),rs.getString("type"),rs.getString("subject"),rs.getBoolean("marked"));
+                reclamations.add(r);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return reclamations;
+    }
+    
+      public List<Reclamation> getAllReclamation(boolean marked) {
+        String sql="select * from reclamation where marked = ? ";
+         Reclamation r= null;
+         List<Reclamation> reclamations=new ArrayList<>();
+    try {
+            PreparedStatement prepared = cnx.prepareStatement(sql);
+           
+             prepared.setBoolean(1, marked);
+           
+           ResultSet rs= prepared.executeQuery();
+          while (rs.next()) {
+                r = new Reclamation(rs.getInt(1),membreService.getMembre(rs.getInt(2)),rs.getString(4),rs.getDate(3),rs.getString("type"),rs.getString("subject"),rs.getBoolean("marked"));
                 reclamations.add(r);
             }
         } catch (SQLException ex) {

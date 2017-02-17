@@ -23,6 +23,8 @@ public class Annonce {
     public Annonce() {
     }
 
+    
+    
     public Annonce(String depart, String destination, boolean fumeur, boolean bavard, boolean men_only, boolean women_only, boolean animaux, Date date_annonce, boolean regulier, String horaire_depart, int places, int tarif, String description, Membre m, Voiture v) { 
        // this.id_annonce = id_annonce;
         this.depart = depart;
@@ -176,7 +178,7 @@ public class Annonce {
     
     @Override
     public String toString() {
-        return "Annonce{" + "id_annonce=" + id_annonce + ", depart=" + depart + ", destination=" + destination + ", fumeur=" + fumeur + ", bavard=" + bavard + ", men_only=" + men_only + ", women_only=" + women_only + ", animaux=" + animaux + ", date_annonce=" + date_annonce + ", regulier=" + regulier + ", horaire_depart=" + horaire_depart + ", places=" + places + ", tarif=" + tarif + ", description=" + description + '}'; //, Membre=" + m + ", Voiture=" + v + '}';
+        return "Annonce{" + "id_annonce=" + id_annonce + ", depart=" + depart + ", destination=" + destination + ", fumeur=" + fumeur + ", bavard=" + bavard + ", men_only=" + men_only + ", women_only=" + women_only + ", animaux=" + animaux + ", date_annonce=" + date_annonce + ", regulier=" + regulier + ", horaire_depart=" + horaire_depart + ", places=" + places + ", tarif=" + tarif + ", description=" + description +"Membre=" + m + ", Voiture=" + v + '}';
     }
     
 }

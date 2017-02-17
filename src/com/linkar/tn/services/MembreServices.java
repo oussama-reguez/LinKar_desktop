@@ -3,17 +3,22 @@ package com.linkar.tn.services;
 
 
 import com.linkar.tn.Iservice.MembreIService;
+import com.linkar.tn.entities.Annonce;
 
 
 import com.linkar.tn.entities.Membre;
 import com.linkar.tn.technics.DataSource;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -132,11 +137,11 @@ cnx=DataSource.getDataSource().getConnection();
         try {
             ps = cnx.prepareStatement(req);
             ps.setString(1, search+"%");
-            ps.setString(1, search+"%");
+            ps.setString(2, search+"%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) 
             {
-                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7),rs.getBoolean("statut"));
               membres.add(m);
             }
         } catch (Exception e) {
@@ -145,7 +150,8 @@ cnx=DataSource.getDataSource().getConnection();
     return membres;
     }
           
-   
+  
+  
         public List<String> getFirstNames(String search){
          List<String> results = new ArrayList<String>();
             String req = "select first_name from membre where first_name like ? ";
@@ -212,6 +218,7 @@ cnx=DataSource.getDataSource().getConnection();
        
         
         
+       
         
         
     public List<Membre> searchMembersByFirstName(String search){
@@ -225,7 +232,7 @@ cnx=DataSource.getDataSource().getConnection();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) 
             {
-                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7),rs.getBoolean("statut"));
               membres.add(m);
             }
         } catch (Exception e) {
@@ -245,7 +252,7 @@ cnx=DataSource.getDataSource().getConnection();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) 
             {
-                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7),rs.getBoolean("statut"));
               membres.add(m);
             }
         } catch (Exception e) {
@@ -266,7 +273,7 @@ cnx=DataSource.getDataSource().getConnection();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) 
             {
-                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7));
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7),rs.getBoolean("statut"));
               membres.add(m);
             }
         } catch (Exception e) {
@@ -276,8 +283,195 @@ cnx=DataSource.getDataSource().getConnection();
     return membres;
     }
     
+     public  LinkedHashMap<Date,Integer> getStatCreatedUsers(){
+       String req = "select  DATE(CreatedTime) d ,count(id_member) from membre   GROUP BY YEAR(d), MONTH(d)  order by CreatedTime ";
+         LinkedHashMap<Date,Integer>results = new LinkedHashMap<>();
+        
+        try {
+            ps = cnx.prepareStatement(req);
+           
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                try{
+                results.put(rs.getDate(1),rs.getInt(2));
+                }
+                catch(SQLException e){
+                    System.out.println("date problem");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   
+        
+        return results;
+    }
+     
+         public  LinkedHashMap<Date,Integer> getStatCreatedUsersbyYear(){
+       String req = "select  DATE(CreatedTime) d ,count(id_member) from membre   GROUP BY YEAR(d) order by CreatedTime ";
+         LinkedHashMap<Date,Integer>results = new LinkedHashMap<>();
+        
+        try {
+            ps = cnx.prepareStatement(req);
+           
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                try{
+                results.put(rs.getDate(1),rs.getInt(2));
+                }
+                catch(SQLException e){
+                    System.out.println("date problem");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   
+        
+        return results;
+    }
+     
+      public  Map<String, Integer>getStatnbrUsersbyGender(){
+       String req = "select  gender ,count(id_member) from membre  group by  gender ";
+        Map<String, Integer> results = new HashMap<>();
+        
+        try {
+            ps = cnx.prepareStatement(req);
+           
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                try{
+                results.put(rs.getString(1),rs.getInt(2));
+                }
+                catch(SQLException e){
+                    System.out.println("date problem");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   
+        
+        return results;
+    }
+     
+      
+        public int getNbrUsers(){
+        
+         String req = "select count(id_member) from membre  ";
+      
+         Membre m = null;
+        try {
+            ps = cnx.prepareStatement(req);
+           ps.setMaxRows(1);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+              return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    return 0;
+    }
+        
+        
+         public List<Membre> getActiveUsers(int nbAnnonce){
+          
+            return null;
+      }
+         
+         public Membre getMembre(int id ){
+             
+            
+         String req = "select *  from membre where id_member=?  ";
+      
+         Membre m = null;
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+           ps.setMaxRows(1);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                rs.getInt(1);
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7),rs.getBoolean("statut"));
+              return m;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return null;
+         }
+         
+         
+          public List<Membre> getAllMembres(){
+             
+            
+         String req = "select *  from membre  ";
+      List<Membre>membres = new ArrayList<>();
+         Membre m = null;
+        try {
+            ps = cnx.prepareStatement(req);
+          //  ps.setInt(1, id);
+           //ps.setMaxRows(1);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                rs.getInt(1);
+                
+                m = new Membre(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getDouble(8),rs.getString(9),rs.getBoolean(10),rs.getBoolean(11),rs.getBoolean(12),rs.getBoolean(13),rs.getString(14),rs.getString(15),rs.getString(7),rs.getBoolean("statut"));
+             
+                membres.add(m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return membres;
+         }
+        public   void changeRole(boolean role,int id_membre){
+              
+	String req="update membre set role=? where id_member=?";
+    try {
+        PreparedStatement ps=cnx.prepareStatement(req);
+        ps.setBoolean(1,role);
+        ps.setInt(2,id_membre);
+        
+       
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(MembreServices.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	}
+        
+        public void toggleMember(int id_membre,boolean isBlocked){
+            String req="update membre set statut=? where id_member=?";
+    try {
+        PreparedStatement ps=cnx.prepareStatement(req);
+        ps.setBoolean(1,isBlocked);
+        ps.setInt(2,id_membre);
+        
+       
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(MembreServices.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	}
+            
+        
+       
+        }
+
+           
+          
+        
+        
+ 
+     
     
-    
-}
+
 
 
