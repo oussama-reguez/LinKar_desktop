@@ -7,8 +7,10 @@ package com.linkar.tn.gui;
 
 import javafx.scene.image.Image;
 import java.io.File;
+import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.nio.file.Path;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +36,7 @@ public class Register2Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
 
     @FXML

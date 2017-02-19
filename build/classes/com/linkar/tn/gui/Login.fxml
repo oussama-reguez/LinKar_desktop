@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.gui.LoginController">
+   <children>
+      <JFXButton fx:id="loginbutton" defaultButton="true" layoutX="169.0" layoutY="254.0" onAction="#login" prefHeight="48.0" prefWidth="263.0" style="-fx-background-color: #01796F;" text="Se connecter" textFill="WHITE" />
+      <JFXButton fx:id="exitbutton" cancelButton="true" layoutX="312.0" layoutY="314.0" onAction="#exit" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #B40431;" text="Quitter" textFill="WHITE" />
+      <JFXButton fx:id="gotoregisterbutton" layoutX="169.0" layoutY="314.0" onAction="#gotoregister" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #013ADF;" text="S'inscrire" textFill="WHITE" />
+      <JFXTextField fx:id="email_box" labelFloat="true" layoutX="169.0" layoutY="56.0" prefHeight="55.0" prefWidth="263.0" promptText="Adresse Email" />
+      <JFXPasswordField fx:id="password_box" labelFloat="true" layoutX="169.0" layoutY="155.0" prefHeight="55.0" prefWidth="263.0" promptText="Mot de passe" />
+      <Label fx:id="invalid_label" layoutX="169.0" layoutY="226.0" prefHeight="17.0" prefWidth="263.0" textFill="#f20202" />
+   </children>
+</AnchorPane>

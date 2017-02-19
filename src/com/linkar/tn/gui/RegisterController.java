@@ -16,9 +16,12 @@ import com.linkar.tn.Iservices.MembreIService;
 import com.linkar.tn.entities.Membre;
 import com.linkar.tn.services.MembreServices;
 import java.io.IOException;
+import javax.mail.PasswordAuthentication;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.beans.value.ObservableValue;
@@ -31,6 +34,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javax.mail.Authenticator;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import org.apache.commons.validator.EmailValidator;
 
 /**
@@ -145,9 +159,7 @@ public class RegisterController implements Initializable {
         String gender = null;
         LocalDate date = datefield.getValue();
 
-       
         Date date_naiss = Date.valueOf(date); //Convert from LocalDate to sqlDate
-
 
         if (genderfemme.isSelected()) {
             gender = ("Femme");
@@ -168,20 +180,24 @@ public class RegisterController implements Initializable {
         }
         if (email_valid == 1 && date_valid == 1 && gender_valid == 1) {
             int sms_code = ThreadLocalRandom.current().nextInt(1000, 999999);
-            Membre m = new Membre(last_name, first_name, date_naiss, email, password, phone_number, gender, false, false, false, false, address,sms_code);
+            Membre m = new Membre(last_name, first_name, date_naiss, email, password, phone_number, gender, false, false, false, false, address, sms_code);
             MembreIService s = new MembreServices();
             s.add(m);
+            //Email
+            sendMail(email, first_name, last_name);
             // + Notification
+            
             Parent register2_page = FXMLLoader.load(getClass().getResource("Register2.fxml"));
             Scene register2_scene = new Scene(register2_page);
             Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
             app_stage.hide();
             app_stage.setScene(register2_scene);
             app_stage.show();
-        }
-        if (email_valid == 1 && date_valid == 0 && gender_valid == 1) {
-            System.out.println("test");
-            datelabel.setText("Champs obligatoire!");
+
+            if (email_valid == 1 && date_valid == 0 && gender_valid == 1) {
+                System.out.println("test");
+                datelabel.setText("Champs obligatoire!");
+            }
         }
     }
 
@@ -198,5 +214,39 @@ public class RegisterController implements Initializable {
         app_stage.hide();
         app_stage.setScene(login_scene);
         app_stage.show();
+    }
+
+    public void sendMail(String email,String first_name,String last_name) throws MessagingException, SQLException {
+        final String username = "linkar.contact@gmail.com";
+        final String pass = "Nana0511";
+        Properties props = new Properties();
+        props.put("mail.smtp.user", username);
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "25");
+        props.put("mail.debug", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.EnableSSL.enable", "true");
+
+        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, pass);
+            }
+        });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(username));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+        message.setSubject("Bienvenu(e) "+first_name+" "+last_name+" à LinKar!");
+        message.setContent("Votre inscription à été effectuée!", "text/html;charset=utf-8");
+        Transport.send(message);
+        System.out.println("Email sent.");
+
     }
 }
