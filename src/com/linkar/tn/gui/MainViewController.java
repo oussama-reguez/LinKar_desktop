@@ -23,33 +23,35 @@ public class MainViewController {
 
     @FXML
     public void gotoprofile(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  }
+        Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
     @FXML
     public void logout(ActionEvent ae) throws IOException {
-    
-    Parent login_page = FXMLLoader.load(getClass().getResource("Login.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  }  
-    static int id_other ;
-        @FXML
+
+        Parent login_page = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+    static int id_other;
+
+    @FXML
     public void testmembre(ActionEvent ae) throws IOException {
 
-    id_other=12;
-    Parent login_page = FXMLLoader.load(getClass().getResource("ProfileOther.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  }
+        id_other = 12;
+        Parent login_page = FXMLLoader.load(getClass().getResource("ProfileOther.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
 }

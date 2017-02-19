@@ -34,84 +34,101 @@ import javafx.stage.Stage;
 public class ProfileController implements Initializable {
 
     @FXML
-    private ImageView profile_picture ;
-    @FXML 
+    private ImageView profile_picture;
+    @FXML
     private Label name;
-    @FXML 
+    @FXML
     private Label verified;
-    @FXML 
+    @FXML
     private Label birth_date;
-    @FXML 
+    @FXML
     private Label phone_number;
-    @FXML 
+    @FXML
     private Label average_rating;
     @FXML
     private JFXButton validatenumberbutton;
-    
-    
+    @FXML
+    private JFXButton validatecinbutton;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Mon profil est affiché");
-         name.setText(m.getLast_name()+" "+m.getFirst_name());
-         if (true==m.isVerif_cin()) {
-             verified.setText("✓");
-         }
-         birth_date.setText("Date de naissance: "+m.getBirth());
-         phone_number.setText("Numéro de téléphone: "+m.getPhone_number());
-         LocalDate date = LocalDate.now();
-         profile_picture.setImage(new Image(m.getUrl_picture()));
-         System.out.println(m.isVerif_number());
-         if (m.isVerif_number()==true)
-         {
-             validatenumberbutton.setVisible(false);
-         }
+        name.setText(m.getLast_name() + " " + m.getFirst_name());
+        if (true == m.isVerif_cin()) {
+            verified.setText("✓");
+        }
+        birth_date.setText("Date de naissance: " + m.getBirth());
+        phone_number.setText("Numéro de téléphone: " + m.getPhone_number());
+        LocalDate date = LocalDate.now();
+        profile_picture.setImage(new Image(m.getUrl_picture()));
+        System.out.println(m.isVerif_number());
+        if (m.isVerif_number() == true) {
+            validatenumberbutton.setVisible(false);
+        }
+        if (m.isVerif_cin() == true) {
+            validatecinbutton.setVisible(false);
+        }
     }
+
     @FXML
     public void gotomain(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("MainView.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  } 
-    MembreIService s = new MembreServices() ; 
+        Parent login_page = FXMLLoader.load(getClass().getResource("MainView.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+    MembreIService s = new MembreServices();
     Membre m = s.getById(IDSession);
 
-       @FXML
+    @FXML
     public void gotocars(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("ListeVoitures.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  }
-        @FXML
+        Parent login_page = FXMLLoader.load(getClass().getResource("ListeVoitures.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
+    @FXML
     public void editpassword(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("EditPassword.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  } 
-        @FXML
+        Parent login_page = FXMLLoader.load(getClass().getResource("EditPassword.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
+    @FXML
     public void editprofile(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("EditProfile.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  } 
-            @FXML
+        Parent login_page = FXMLLoader.load(getClass().getResource("EditProfile.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
+    @FXML
     public void validatenumber(ActionEvent ae) throws IOException {
         Parent login_page = FXMLLoader.load(getClass().getResource("ValidateNumber.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
+    @FXML
+    public void validatecin(ActionEvent ae) throws IOException {
+        Parent login_page = FXMLLoader.load(getClass().getResource("ValidateCIN.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
     }
 }

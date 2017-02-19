@@ -30,15 +30,16 @@ public class ListeVoituresOtherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
     @FXML
     public void gotoprofile(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("ProfileOther.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  }
-    
+        Parent login_page = FXMLLoader.load(getClass().getResource("ProfileOther.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
 }

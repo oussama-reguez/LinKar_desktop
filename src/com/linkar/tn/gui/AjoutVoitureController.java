@@ -135,8 +135,8 @@ public class AjoutVoitureController implements Initializable {
         String model = carmodel.getText();
         String brand = (String) carbrand.getValue();
         String color = carcolor.getText();
-        String confort="";
-        int nombre_places=4;
+        String confort = "";
+        int nombre_places = 4;
 
         if (confort1.isSelected()) {
             confort = "Peu confortable";
@@ -190,10 +190,10 @@ public class AjoutVoitureController implements Initializable {
             nombre_places = 8;
 
         }
-        String url_car_selfie="aaa";
-            Voiture v = new Voiture(brand,model,IDSession,confort,nombre_places,url_car_selfie,color);
-            VoitureIService vs = new VoitureServices();
-            vs.addvoiture(v);
-            
+        String url_car_selfie = "aaa";
+        Voiture v = new Voiture(brand, model, IDSession, confort, nombre_places, url_car_selfie, color);
+        VoitureIService vs = new VoitureServices();
+        vs.addvoiture(v);
+
     }
 }

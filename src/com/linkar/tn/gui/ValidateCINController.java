@@ -5,8 +5,8 @@
  */
 package com.linkar.tn.gui;
 
-import javafx.scene.image.Image;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.ResourceBundle;
@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -27,8 +28,11 @@ import javafx.stage.Window;
  *
  * @author Rishya
  */
-public class Register2Controller implements Initializable {
+public class ValidateCINController implements Initializable {
 
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     private ImageView picture;
 
@@ -38,8 +42,8 @@ public class Register2Controller implements Initializable {
     }
 
     @FXML
-    public void gotomain(ActionEvent ae) throws Exception {
-        Parent login_page = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    public void cancel(ActionEvent ae) throws IOException {
+        Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
         Scene login_scene = new Scene(login_page);
         Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         app_stage.hide();
@@ -48,28 +52,7 @@ public class Register2Controller implements Initializable {
     }
 
     @FXML
-    public void upload_picture(ActionEvent ae) throws Exception {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Ajouter une image de profile");
-        Window stage = null;
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Images", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("GIF", "*.gif"),
-                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
-                new FileChooser.ExtensionFilter("PNG", "*.png")
-        );
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        System.out.println("Le chemin image est: " + selectedFile);
-        Path selectedFile_path = selectedFile.toPath();
-        String selectedFile_string = selectedFile_path.toString();
-
-        picture.setImage(new Image(selectedFile_string));
-        //    Uploader.uploadFile(IDSession,selectedFile_string);
-    }
-
-    @FXML
-    public void upload_cin(ActionEvent ae) throws Exception {
+    public void sendcin(ActionEvent ae) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Ajouter un scan CIN/Passeport");
         Window stage = null;

@@ -36,45 +36,42 @@ public class EditPasswordController implements Initializable {
     private JFXPasswordField oldpass;
     @FXML
     private Label invalid_password;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     public void backtoprofile(ActionEvent ae) throws IOException {
-    Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-  }  
-    
+        Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+        Scene login_scene = new Scene(login_page);
+        Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(login_scene);
+        app_stage.show();
+    }
+
     @FXML
     public void doeditpassword(ActionEvent ae) throws IOException {
-    String oldpassword = oldpass.getText();   
-    String newpassword = newpass.getText(); 
-    MembreIService s = new MembreServices();
-    Membre m = s.getById(IDSession);
-    if (m.getPassword().equals(oldpassword))
-    {
-    s.editPass(IDSession,newpassword);
+        String oldpassword = oldpass.getText();
+        String newpassword = newpass.getText();
+        MembreIService s = new MembreServices();
+        Membre m = s.getById(IDSession);
+        if (m.getPassword().equals(oldpassword)) {
+            s.editPass(IDSession, newpassword);
 
-    Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-    Scene login_scene = new Scene(login_page);
-    Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-    app_stage.hide();
-    app_stage.setScene(login_scene);
-    app_stage.show();
-    // + Notification
+            Parent login_page = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+            Scene login_scene = new Scene(login_page);
+            Stage app_stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+            app_stage.hide();
+            app_stage.setScene(login_scene);
+            app_stage.show();
+            // + Notification
+        } else {
+            invalid_password.setText("Mot de passe invalide");
+            oldpass.clear();
+        }
+
     }
-    else
-    {
-        invalid_password.setText("Mot de passe invalide");
-        oldpass.clear();
-    }
-    
-  } 
 }
