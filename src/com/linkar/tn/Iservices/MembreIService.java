@@ -6,6 +6,7 @@
 package com.linkar.tn.Iservices;
 
 import com.linkar.tn.entities.Membre;
+import java.sql.Date;
 
 /**
  *
@@ -13,9 +14,9 @@ import com.linkar.tn.entities.Membre;
  */
 public interface MembreIService {
   void add(Membre m);
-  void edit(Membre m);
-  void editPass(Membre m);
-  void editEmail(Membre m);
+  void edit(int id, String last_name, String first_name, Date birth, String phone_number, String address, String email);
+  void editPass(int id,String pass);
+  void editVerif_number(int id);
   void delete(Membre m); 
   Membre getById(Integer id);
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.gui.Register2Controller">
+   <children>
+      <JFXButton defaultButton="true" layoutX="206.0" layoutY="413.0" onAction="#gotomain" prefHeight="51.0" prefWidth="227.0" text="Se connecter avec mon compte créé" />
+      <JFXButton defaultButton="true" layoutX="82.0" layoutY="299.0" onAction="#upload_picture" prefHeight="51.0" prefWidth="111.0" text="Ajouter une photo de profil" textAlignment="CENTER" wrapText="true" />
+      <ImageView fx:id="cin" fitHeight="150.0" fitWidth="200.0" layoutX="339.0" layoutY="137.0" pickOnBounds="true" />
+      <JFXButton defaultButton="true" layoutX="366.0" layoutY="299.0" onAction="#upload_cin" prefHeight="51.0" prefWidth="146.0" text="Envoyer un scan de mon CIN ou passeport" textAlignment="CENTER" wrapText="true" />
+      <Label layoutX="354.0" layoutY="350.0" prefHeight="19.0" prefWidth="170.0" text="Le scan permettera de vérifier votre compte" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="350.0" prefHeight="19.0" prefWidth="154.0" text="Dimensions 130*150px recommendées" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="50.0" prefHeight="36.0" prefWidth="227.0" text="Plus qu'une étape!" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="picture" fitHeight="150.0" fitWidth="130.0" layoutX="71.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.validation.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="pane" blendMode="SRC_ATOP" cacheHint="QUALITY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.gui.RegisterController">
+    <stylesheets>
+        <URL value="@Register.css" />
+    </stylesheets>
+    <children>
+        <VBox alignment="CENTER" layoutY="38.0" prefHeight="550.0" prefWidth="600.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Nom" />
+                        <JFXTextField fx:id="nomfield" labelFloat="true" prefHeight="5.0" prefWidth="175.0" promptText="Nom" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Prénom" />
+                        <JFXTextField fx:id="prenomfield" labelFloat="true" prefHeight="5.0" prefWidth="175.0" promptText="Prénom" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="37.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                        <Label text="Date de naissance" />
+                  <VBox prefHeight="200.0" prefWidth="180.0">
+                     <children>
+                              <JFXDatePicker fx:id="datefield" />
+                        <Label fx:id="datelabel" prefHeight="23.0" prefWidth="134.0" textFill="#c90707">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <padding>
+                              <Insets top="8.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="18.0" />
+                     </padding>
+                  </VBox>
+               </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Email" />
+                  <VBox alignment="BASELINE_LEFT" prefHeight="200.0" prefWidth="180.0">
+                     <children>
+                              <JFXTextField fx:id="emailfield" labelFloat="true" prefHeight="25.0" prefWidth="175.0" promptText="Email" />
+                        <Label fx:id="emaillabel" textFill="#c60b0b">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Mot de passe" />
+                        <JFXPasswordField fx:id="passwordfield" labelFloat="true" prefHeight="25.0" prefWidth="175.0" promptText="Password" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="20.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Sexe">
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding></Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                                    <JFXRadioButton fx:id="genderhomme" text="Homme">
+                                        <toggleGroup>
+                                            <ToggleGroup fx:id="gendergroup" />
+                                        </toggleGroup>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton fx:id="genderfemme" text="Femme" toggleGroup="$gendergroup" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="sexelabel" textFill="#b21010">
+                           <padding>
+                              <Insets left="15.0" top="8.0" />
+                           </padding>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Numéro" />
+                        <JFXTextField fx:id="numberfield" labelFloat="true" prefHeight="25.0" prefWidth="175.0" promptText="Numéro de téléphone" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" spacing="20.0">
+                    <children>
+                        <Label text="Adresse postale" />
+                        <JFXTextArea fx:id="addressfield" labelFloat="true" prefHeight="17.0" prefWidth="286.0" promptText="Adresse" />
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="90.0" prefWidth="600.0">
+                                    <children>
+                                        <JFXButton defaultButton="true" onAction="#register" prefHeight="40.0" prefWidth="260.0" text="M'inscrire">
+                                            <font>
+                                                <Font name="System Bold" size="13.0" />
+                                            </font>
+                                        </JFXButton>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <JFXButton onAction="#gotologin" prefHeight="39.0" prefWidth="130.0" text="J'ai un compte" />
+                                        <JFXButton fx:id="exitbutton" cancelButton="true" onAction="#exit" prefHeight="39.0" prefWidth="130.0" text="Quitter" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="15.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets top="15.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="8.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

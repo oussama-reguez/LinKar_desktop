@@ -19,7 +19,7 @@ public class Membre {
     private Date birth;
     private String email;
     private String password;
-    private double phone_number;
+    private String phone_number;
     private String gender;
     private boolean verif_number;
     private boolean verif_cin;
@@ -28,12 +28,12 @@ public class Membre {
     private String url_cin;
     private String url_picture;
     private String address;
+    private int sms_code;
 
     public Membre()
     {}
     
-    public Membre(int id_member, String last_name, String first_name, Date birth, String email, String password, double phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String url_cin, String url_picture,String address) {
-        this.id_member = id_member;
+    public Membre(String last_name, String first_name, Date birth, String email, String password, String phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String address, int sms_code) {
         this.last_name = last_name;
         this.first_name = first_name;
         this.birth = birth;
@@ -45,10 +45,28 @@ public class Membre {
         this.verif_cin = verif_cin;
         this.verif_email = verif_email;
         this.role = role;
-        this.url_cin = url_cin;
-        this.url_picture = url_picture;
         this.address = address;
+        this.sms_code = sms_code;
     }
+
+    public Membre(String last_name, String first_name, Date birth, String email, String password, String phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String url_picture, String url_cin, String address, int sms_code) {
+        this.last_name = last_name;
+        this.first_name = first_name;
+        this.birth = birth;
+        this.email = email;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.gender = gender;
+        this.verif_number = verif_number;
+        this.verif_cin = verif_cin;
+        this.verif_email = verif_email;
+        this.role = role;
+        this.url_picture = url_picture;
+        this.url_cin = url_cin;
+        this.address = address;
+        this.sms_code = sms_code;
+    }
+
 
     public String getAddress() {
         return address;
@@ -84,7 +102,7 @@ public class Membre {
         return password;
     }
 
-    public double getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
@@ -110,6 +128,9 @@ public class Membre {
 
     public String getUrl_cin() {
         return url_cin;
+    }
+    public int getSms_code() {
+        return sms_code;
     }
 
     public String getUrl_picture() {
@@ -140,7 +161,7 @@ public class Membre {
         this.password = password;
     }
 
-    public void setPhone_number(double phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
@@ -171,10 +192,13 @@ public class Membre {
     public void setUrl_picture(String url_picture) {
         this.url_picture = url_picture;
     }
+    public void setSms_code(int sms_code) {
+        this.sms_code = sms_code;
+    }
 
     @Override
     public String toString() {
-        return "Membre{" + "id_member=" + id_member + ", last_name=" + last_name + ", first_name=" + first_name + ", birth=" + birth + ", email=" + email + ", password=" + password + ", phone_number=" + phone_number + ", gender=" + gender + ", verif_number=" + verif_number + ", verif_cin=" + verif_cin + ", verif_email=" + verif_email + ", role=" + role + ", url_cin=" + url_cin + ", url_picture=" + url_picture + ", address=" + address + '}';
+        return "Membre{" + "id_member=" + id_member + ", last_name=" + last_name + ", first_name=" + first_name + ", birth=" + birth + ", email=" + email + ", password=" + password + ", phone_number=" + phone_number + ", gender=" + gender + ", verif_number=" + verif_number + ", verif_cin=" + verif_cin + ", verif_email=" + verif_email + ", role=" + role + ", url_cin=" + url_cin + ", url_picture=" + url_picture + ", address=" + address +  ", sms_code=" + sms_code+'}';
     }
 
 

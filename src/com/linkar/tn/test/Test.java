@@ -5,10 +5,10 @@
  */
 package com.linkar.tn.Test;
 
+import com.linkar.tn.Iservices.MembreIService;
 import com.linkar.tn.entities.Membre;
 import com.linkar.tn.services.MembreServices;
-
-
+import java.sql.Date;
 
 /**
  *
@@ -20,15 +20,15 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        java.sql.Date sqlDate = new java.sql.Date(2013, 02, 23);
-
-        Membre m = new Membre(0,"hello","dfd",sqlDate,"ous@gmailtretgfdghghthg","sd",32,"Non-binary",false, false, false, false, "edf", "sdfsdf","Tunis");
-        MembreServices s = new MembreServices() ;
-        s.add(m);
-        m.setId_member(1);
-        s.delete(m);
         
+//        s.delete(m);
 
+       MembreIService s = new MembreServices();
+//        ms.editPass(10, "0000"); 
+//        java.sql.Date date = new Date(10,12,2000);
+//        double d = 18746684;
+//        s.edit(11, "aze", "kkk", date, d, "Tunis", "user@email.com");
+    
     }
     
 }

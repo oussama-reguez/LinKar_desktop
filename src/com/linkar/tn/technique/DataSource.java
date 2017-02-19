@@ -8,6 +8,7 @@ package com.linkar.tn.technique;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class DataSource {
   private static DataSource myinstance;
-   private String url;//="jdbc:mysql://localhost:3306/linkar";
+   private String url;//="jdbc:mysql://http://127.0.0.1:3306/linkar";
    private String login;//="root";
    private String pwd;//="";
    private Properties properties;
@@ -30,12 +31,13 @@ public class DataSource {
   {
   properties=new Properties();
       try {
+          
  properties.load(new FileInputStream(new File("configuration.properties")));
  url=properties.getProperty("url");
  login=properties.getProperty("login");
  pwd=properties.getProperty("pwd");
  cnx=DriverManager.getConnection(url, login, pwd);
-          System.out.println("Connexion établie");
+          System.out.println("Connexion établie (Datasource) ☻");
       } catch (SQLException ex) {
           Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);
       } catch (IOException ex) {

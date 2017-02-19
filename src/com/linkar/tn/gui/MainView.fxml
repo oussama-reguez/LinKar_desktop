@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.gui.MainViewController">
+   <children>
+      <JFXButton layoutX="300.0" layoutY="22.0" onAction="#gotoprofile" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #01796F;" text="Voir mon profil" textFill="WHITE" />
+      <JFXButton layoutX="454.0" layoutY="22.0" onAction="#logout" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #01796F;" text="Se déconnecter" textFill="WHITE" />
+      <JFXButton layoutX="166.0" layoutY="122.0" onAction="#testmembre" prefHeight="48.0" prefWidth="269.0" text="Afficher profil du membre dont l'ID est 12" />
+      <JFXButton layoutX="70.0" layoutY="198.0" prefHeight="298.0" prefWidth="215.0" style="-fx-background-color: #01796F;" text="Annonces" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="316.0" layoutY="198.0" prefHeight="298.0" prefWidth="215.0" style="-fx-background-color: #01796F;" text="Demandes" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
