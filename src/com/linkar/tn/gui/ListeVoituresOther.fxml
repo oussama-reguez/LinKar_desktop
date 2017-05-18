@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.ListeVoituresOtherController">
+   <children>
+      <JFXButton cancelButton="true" layoutX="160.0" layoutY="456.0" onAction="#gotoprofile" prefHeight="52.0" prefWidth="280.0" text="Retourner au profil" />
+      <TableView layoutX="50.0" layoutY="43.0" prefHeight="400.0" prefWidth="500.0">
+        <columns>
+          <TableColumn prefWidth="150.0" text="Image" />
+          <TableColumn prefWidth="125.0" text="Marque" />
+          <TableColumn prefWidth="75.0" text="Couleur" />
+          <TableColumn prefWidth="75.0" text="Confort" />
+          <TableColumn prefWidth="75.0" text="Places" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.NotificationController">
+   <children>
+      <VBox fx:id="vBox" prefHeight="406.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Notification">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="countNotif" text="(50)">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <JFXButton alignment="TOP_CENTER" onAction="#settingAction" prefHeight="25.0" prefWidth="90.0" text="settings">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Button fx:id="b" mnemonicParsing="false" onAction="#handle" text="Button" />
+          
+         </children>
+      </VBox>
+      <VBox fx:id="parametre" alignment="TOP_CENTER" layoutX="26.0" layoutY="56.0" prefHeight="312.0" prefWidth="574.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <JFXToggleButton fx:id="soundToggle" contentDisplay="RIGHT" text="Emettre un son                                " />
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <JFXToggleButton fx:id="messageToggle" contentDisplay="RIGHT" text="activer les notifications de messages" />
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <JFXToggleButton fx:id="responseToggle" contentDisplay="RIGHT" text="activer les notifications de reponses  " />
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <JFXToggleButton fx:id="demandeToggle" contentDisplay="RIGHT" text="activer les notifications des demandes" />
+               </children>
+            </HBox>
+            <HBox prefHeight="84.0" prefWidth="574.0">
+               <children>
+                  <JFXButton onAction="#saveAction" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #3498db;" text="Enregistrer">
+                     <HBox.margin>
+                        <Insets top="25.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#cancelAction" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #e74c3c;" text="Annuler">
+                     <HBox.margin>
+                        <Insets left="10.0" top="25.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

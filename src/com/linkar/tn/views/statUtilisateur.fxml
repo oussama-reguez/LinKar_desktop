@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane id="AnchorPane" maxHeight="1.7976931348623157E308" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.StatUtilisateurController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="35.0" prefWidth="600.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Nombre d'utilisateur total :" />
+                        <Label fx:id="countUsers" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Nombre d'utilisateur bloques:" />
+                        <Label fx:id="blockedUsers" text="Label" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="220.0" prefWidth="800.0">
+               <children>
+                  <LineChart fx:id="totalUsersByDate" prefHeight="157.0" prefWidth="591.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <PieChart fx:id="pieChart" prefHeight="229.0" prefWidth="379.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="229.0" prefWidth="800.0">
+               <children>
+                  <StackedBarChart fx:id="totalUsersByYear">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </StackedBarChart>
+               </children>
+            </HBox>
+            <HBox fx:id="topUsers" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="table" prefHeight="200.0" prefWidth="565.0">
+                    <columns>
+                      <TableColumn fx:id="compteCol" prefWidth="392.0" text="Utilisateur" />
+                      <TableColumn fx:id="nbrAnnonceCol" prefWidth="172.0" text="Annonce" />
+                    </columns>
+                  </TableView>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

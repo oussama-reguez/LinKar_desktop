@@ -7,8 +7,9 @@ package com.linkar.tn.services;
  */
 
 import com.linkar.tn.entities.Reclamation;
-import com.esprit.tn.technique.DataSource;
-import com.linkar.tn.Iservice.IReclamationService;
+
+import com.linkar.tn.Iservice.ReclamationIService;
+import com.linkar.tn.technics.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author Oussama Reguez
  */
-public class ReclamationService implements IReclamationService {
+public class ReclamationService implements ReclamationIService {
  private Connection cnx;
     public ReclamationService(){
          cnx=DataSource.getDataSource().getConnection();
@@ -32,7 +33,7 @@ public class ReclamationService implements IReclamationService {
     String sql="INSERT INTO `reclamation`(`id_membre`, `date_reclamation`, `text`) VALUES (?,?,?)";
     try {
             PreparedStatement prepared = cnx.prepareStatement(sql);
-            prepared.setInt(1,r.getMembre().getId_membre());
+            prepared.setInt(1,r.getMembre().getId_member());
             prepared.setDate(2, r.getDate_Reclamation());
             prepared.setString(3, r.getText());
            
@@ -59,7 +60,7 @@ public class ReclamationService implements IReclamationService {
        String sql="UPDATE `reclamation` SET `id_membre`=?,`date_reclamation`=?,`text`=? WHERE id_reclamation=?";
     try {
             PreparedStatement prepared = cnx.prepareStatement(sql);
-            prepared.setInt(1,r.getMembre().getId_membre());
+            prepared.setInt(1,r.getMembre().getId_member());
             prepared.setDate(2, r.getDate_Reclamation());
             prepared.setString(3, r.getText());
              prepared.setInt(4,r.getId_reclamation());
@@ -90,6 +91,23 @@ public class ReclamationService implements IReclamationService {
     return r;
     }
 
+    public void markReclamation(boolean mark,int id_reclamation){
+        String sql="UPDATE `reclamation` SET marked=? WHERE id_reclamation=?";
+    try {
+            PreparedStatement prepared = cnx.prepareStatement(sql);
+           prepared.setBoolean(1,mark);
+            prepared.setInt(2,id_reclamation);
+           
+           
+           
+            prepared.executeUpdate();
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    MembreServices membreService = new MembreServices();
     @Override
     public List<Reclamation> getAllReclamation() {
         String sql="select * from reclamation ";
@@ -102,7 +120,27 @@ public class ReclamationService implements IReclamationService {
            
            ResultSet rs= prepared.executeQuery();
           while (rs.next()) {
-                r = new Reclamation(rs.getInt(1),null,rs.getString(4),rs.getDate(3));
+                r = new Reclamation(rs.getInt(1),membreService.getMembre(rs.getInt(2)),rs.getString(4),rs.getDate(3),rs.getString("type"),rs.getString("subject"),rs.getBoolean("marked"));
+                reclamations.add(r);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return reclamations;
+    }
+    
+      public List<Reclamation> getAllReclamation(boolean marked) {
+        String sql="select * from reclamation where marked = ? ";
+         Reclamation r= null;
+         List<Reclamation> reclamations=new ArrayList<>();
+    try {
+            PreparedStatement prepared = cnx.prepareStatement(sql);
+           
+             prepared.setBoolean(1, marked);
+           
+           ResultSet rs= prepared.executeQuery();
+          while (rs.next()) {
+                r = new Reclamation(rs.getInt(1),membreService.getMembre(rs.getInt(2)),rs.getString(4),rs.getDate(3),rs.getString("type"),rs.getString("subject"),rs.getBoolean("marked"));
                 reclamations.add(r);
             }
         } catch (SQLException ex) {

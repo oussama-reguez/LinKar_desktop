@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.EditProfileController">
+   <children>
+      <ImageView fx:id="editpicturepreview" fitHeight="150.0" fitWidth="130.0" layoutX="55.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton layoutX="55.0" layoutY="220.0" onAction="#editimage" prefHeight="39.0" prefWidth="130.0" text="Modifier image" />
+      <JFXTextField fx:id="editnom" labelFloat="true" layoutX="255.0" layoutY="37.0" prefHeight="39.0" prefWidth="236.0" promptText="Nom" />
+      <JFXTextField fx:id="editprenom" labelFloat="true" layoutX="255.0" layoutY="110.0" prefHeight="39.0" prefWidth="236.0" promptText="Prénom" />
+      <JFXTextField fx:id="editphone" labelFloat="true" layoutX="255.0" layoutY="300.0" prefHeight="39.0" prefWidth="236.0" promptText="Numéro de téléphone" />
+      <JFXTextArea fx:id="editaddress" layoutX="255.0" layoutY="385.0" prefHeight="53.0" prefWidth="236.0" promptText="Adresse" />
+      <JFXButton defaultButton="true" layoutX="121.0" layoutY="465.0" onAction="#doedit" prefHeight="53.0" prefWidth="359.0" text="Mettre à jour" />
+      <JFXDatePicker fx:id="editbirth" layoutX="255.0" layoutY="238.0" prefHeight="25.0" prefWidth="236.0" promptText="Date de naissance" />
+      <JFXTextField fx:id="editemail" labelFloat="true" layoutX="255.0" layoutY="186.0" prefHeight="39.0" prefWidth="236.0" promptText="Adresse email" />
+   </children>
+</AnchorPane>

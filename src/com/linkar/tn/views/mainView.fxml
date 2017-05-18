@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.transitions.hamburger.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.MainController">
+    <children>
+        <StackPane fx:id="mainContent" layoutY="56.0" prefHeight="544.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+            <children>
+
+            </children>
+        </StackPane>
+        <AnchorPane fx:id="navList" layoutY="56.0" prefHeight="544.0" prefWidth="180.0" style="-fx-background-color:white" translateX="-180" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
+            <children>
+            <JFXListView fx:id="listView" prefHeight="444.0" prefWidth="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+        </AnchorPane>
+    
+
+        <JFXToolbar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    
+                 <left>
+                     <HBox>
+                        <children>
+   
+              <JFXRippler fx:id="menuButton" maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+      <control>
+      							<StackPane fx:id="titleBurgerContainer">
+         <children>
+         								<JFXHamburger fx:id="burger"  >
+            <animation>
+            									<HamburgerBackArrowBasicTransition />
+            </animation>
+         								</JFXHamburger>
+         </children>
+      							</StackPane>
+      </control>
+                                                         
+   						</JFXRippler>
+                  <Label style="-fx-text-fill: white;" text="Espace Administrateur">
+                     <padding>
+                        <Insets left="5.0" top="8.0" />
+                     </padding>
+                  </Label>
+                        </children>
+                                                 
+
+                                               
+			
+                             </HBox>			
+                 </left>
+        
+        </JFXToolbar>
+
+    </children>
+
+</AnchorPane>

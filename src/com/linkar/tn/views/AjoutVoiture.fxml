@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.AjoutVoitureController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="108.0" prefWidth="600.0">
+               <children>
+                  <ImageView fx:id="picturecar" fitHeight="114.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXButton onAction="#uploadcarpicture" prefHeight="46.0" prefWidth="241.0" text="Importer l'image de la voiture" />
+               </children>
+               <padding>
+                  <Insets top="40.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Label text="Marque" />
+                  <JFXComboBox fx:id="carbrand" />
+                  <Label text="Modèle" />
+                  <JFXTextField fx:id="carmodel" />
+                  <Label text="Couleur" />
+                  <JFXTextField fx:id="carcolor" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="4.0">
+               <children>
+                  <Label text="Nombre de places" />
+                  <JFXRadioButton fx:id="place1" mnemonicParsing="false" text="1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="nb_places" />
+                     </toggleGroup>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="place2" mnemonicParsing="false" text="2" toggleGroup="$nb_places" />
+                  <JFXRadioButton fx:id="place3" mnemonicParsing="false" text="3" toggleGroup="$nb_places" />
+                  <JFXRadioButton fx:id="place4" mnemonicParsing="false" selected="true" text="4" toggleGroup="$nb_places" />
+                  <JFXRadioButton fx:id="place5" mnemonicParsing="false" text="5" toggleGroup="$nb_places" />
+                  <JFXRadioButton fx:id="place6" mnemonicParsing="false" text="6" toggleGroup="$nb_places" />
+                  <JFXRadioButton fx:id="place7" mnemonicParsing="false" text="7" toggleGroup="$nb_places" />
+                  <JFXRadioButton fx:id="place8" mnemonicParsing="false" text="8" toggleGroup="$nb_places" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <Label text="Confort" />
+                  <JFXRadioButton fx:id="confort1" text="Peu confortable">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="confort_group" />
+                     </toggleGroup></JFXRadioButton>
+                  <JFXRadioButton fx:id="confort2" selected="true" text="Confort normal" toggleGroup="$confort_group" />
+                  <JFXRadioButton fx:id="confort3" text="Confortable" toggleGroup="$confort_group" />
+                  <JFXRadioButton fx:id="confort4" text="Très confortable" toggleGroup="$confort_group" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="600.0">
+               <children>
+                  <JFXButton defaultButton="true" onAction="#doaddcar" prefHeight="54.0" prefWidth="239.0" text="Ajouter" />
+                  <JFXButton onAction="#backtoprofile" prefHeight="54.0" prefWidth="239.0" text="Annuler" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

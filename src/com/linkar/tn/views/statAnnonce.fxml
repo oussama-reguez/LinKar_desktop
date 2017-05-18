@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.StatAnnonceController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+         <HBox prefHeight="35.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Annonce total :" />
+                        <Label fx:id="countAnnonces" text="Label" />
+                     </children>
+                  </HBox>
+            <HBox fx:id="stacked" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <StackedAreaChart fx:id="stackedAreaChart">
+                    <xAxis>
+                                <NumberAxis animated="false" autoRanging="false" forceZeroInRange="true" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="LEFT" tickLabelGap="5.0" tickUnit="1.0" lowerBound="1"  upperBound="12"  />      
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </StackedAreaChart>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <PieChart fx:id="pieDepart" />
+                  <PieChart fx:id="pieDestination" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <PieChart fx:id="categoriePieChart" />
+               </children>
+            </HBox>
+         </children></VBox>
+   </children>
+</AnchorPane>
