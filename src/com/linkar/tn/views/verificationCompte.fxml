@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<StackPane id="AnchorPane" fx:id="stackPane" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.VerificationCompteController">
+   <children>
+      <VBox prefHeight="50" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="52.0" prefWidth="317.0" style="-fx-font-size: 30;" text="Verification Compte">
+                     <padding>
+                        <Insets left="10.0" top="7.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox fx:id="vBox" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <TableView fx:id="mTable" prefHeight="400.0" prefWidth="800.0" />
+               </children></VBox>
+           
+         </children>
+      </VBox>
+   </children>
+</StackPane>

@@ -8,14 +8,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.linkar.tn.views.GestionAnnonceController">
+<StackPane id="AnchorPane" fx:id="stackPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.GestionAnnonceController">
    <children>
       <VBox fx:id="container" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Annonces">
-               <font>
-                  <Font size="30.0" />
-               </font>
+            <Label style="-fx-font-size: 30;" text="Annonces">
                <padding>
                   <Insets left="20.0" />
                </padding>
@@ -23,4 +20,4 @@
          </children>
       </VBox>
    </children>
-</AnchorPane>
+</StackPane>

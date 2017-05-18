@@ -28,22 +28,24 @@ public class Membre {
     }
     
     private int id_member;
-    private SimpleStringProperty last_name;
-    private SimpleStringProperty first_name;
+    private String last_name;
+    private String first_name;
     private Date birth;
-    private SimpleStringProperty email;
+    private String email;
     private String password;
-    private SimpleDoubleProperty  phone_number;
-    private SimpleStringProperty gender;
-    private SimpleBooleanProperty statut;
+    private String  phone_number;
+    private String gender;
+    private boolean statut;
 
-    public boolean isStatut() {
-        return statut.get();
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public void setStatut(boolean statut) {
-        this.statut.set(statut);
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
+
+   
     private boolean verif_number;
     private boolean verif_cin;
     private boolean verif_email;
@@ -51,19 +53,143 @@ public class Membre {
     private String url_cin;
     private String url_picture;
     private String address;
+    private int nbrAnnonce;
 
+    
+      private int sms_code;
+
+    public int getSms_code() {
+        return sms_code;
+    }
+
+    public void setSms_code(int sms_code) {
+        this.sms_code = sms_code;
+    }
+    
     public Membre()
     {}
- 
-    public Membre(int id_member, String last_name, String first_name, Date birth, String email, String password, double phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String url_cin, String url_picture,String address) {
-        this.id_member = id_member;
-        this.last_name = new SimpleStringProperty(last_name);
-        this.first_name = new SimpleStringProperty(first_name);
+    
+    public Membre(String last_name, String first_name, Date birth, String email, String password, String phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String address, int sms_code) {
+        this.last_name = last_name;
+        this.first_name = first_name;
         this.birth = birth;
-        this.email = new SimpleStringProperty(email);
+        this.email = email;
         this.password = password;
-        this.phone_number =  new SimpleDoubleProperty(phone_number);
-        this.gender = new SimpleStringProperty(gender);
+        this.phone_number = phone_number;
+        this.gender = gender;
+        this.verif_number = verif_number;
+        this.verif_cin = verif_cin;
+        this.verif_email = verif_email;
+        this.role =  new SimpleBooleanProperty(role);
+        this.address = address;
+        this.sms_code = sms_code;
+    }
+
+    public Membre(String last_name, String first_name, Date birth, String email, String password, String phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String url_picture, String url_cin, String address, int sms_code) {
+        this.last_name = last_name;
+        this.first_name = first_name;
+        this.birth = birth;
+        this.email = email;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.gender = gender;
+        this.verif_number = verif_number;
+        this.verif_cin = verif_cin;
+        this.verif_email = verif_email;
+        this.role =  new SimpleBooleanProperty(role);
+        this.url_picture = url_picture;
+        this.url_cin = url_cin;
+        this.address = address;
+        this.sms_code = sms_code;
+    }
+    
+    public int getNbrAnnonce() {
+        return nbrAnnonce;
+    }
+
+    public void setNbrAnnonce(int nbrAnnonce) {
+        this.nbrAnnonce = nbrAnnonce;
+    }
+    
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+  
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public boolean isStatut() {
+        return statut;
+    }
+
+    public void setStatut(boolean statut) {
+        this.statut = statut;
+    }
+
+    public SimpleBooleanProperty getRole() {
+        return role;
+    }
+
+    public void setRole(SimpleBooleanProperty role) {
+        this.role = role;
+    }
+
+    
+    
+ 
+    public Membre(int id_member, String last_name, String first_name, Date birth, String email, String password, String phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String url_cin, String url_picture,String address) {
+        this.id_member = id_member;
+        this.last_name = last_name;
+        this.first_name = first_name;
+        this.birth = birth;
+        this.email = email;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.gender = gender;
         this.verif_number = verif_number;
         this.verif_cin = verif_cin;
         this.verif_email = verif_email;
@@ -75,13 +201,13 @@ public class Membre {
     
      public Membre(int id_member, String last_name, String first_name, Date birth, String email, String password, double phone_number, String gender, boolean verif_number, boolean verif_cin, boolean verif_email, boolean role, String url_cin, String url_picture,String address,boolean statut) {
         this.id_member = id_member;
-        this.last_name = new SimpleStringProperty(last_name);
-        this.first_name = new SimpleStringProperty(first_name);
+        this.last_name = last_name;
+        this.first_name = first_name;
         this.birth = birth;
-        this.email = new SimpleStringProperty(email);
+        this.email = email;
         this.password = password;
-        this.phone_number =  new SimpleDoubleProperty(phone_number);
-        this.gender = new SimpleStringProperty(gender);
+         this.phone_number = String.valueOf(phone_number);
+        this.gender = gender;
         this.verif_number = verif_number;
         this.verif_cin = verif_cin;
         this.verif_email = verif_email;
@@ -89,7 +215,7 @@ public class Membre {
         this.url_cin = url_cin;
         this.url_picture = url_picture;
         this.address = address;
-        this.statut=new SimpleBooleanProperty (statut);
+        this.statut=statut;
     }
     public Membre(int id_member){
          this.id_member = id_member;
@@ -109,33 +235,8 @@ public class Membre {
         return id_member;
     }
 
-    public String getLast_name() {
-        return last_name.get();
-    }
+   
 
-    public String getFirst_name() {
-        return first_name.get();
-    }
-
-    public Date getBirth() {
-        return birth;
-    }
-
-    public String getEmail() {
-        return email.get();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public double getPhone_number() {
-        return phone_number.get();
-    }
-
-    public String getGender() {
-        return gender.get();
-    }
 
     public boolean isVerif_number() {
         return verif_number;
@@ -165,33 +266,8 @@ public class Membre {
         this.id_member = id_member;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name.set(last_name);
-    }
+  
 
-    public void setFirst_name(String first_name) {
-        this.first_name.set( first_name);
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
-    }
-
-    public void setEmail(String email) {
-        this.email.set(email);
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPhone_number(double phone_number) {
-        this.phone_number.set( phone_number);
-    }
-
-    public void setGender(String gender) {
-        this.gender.set(gender);
-    }
 
     public void setVerif_number(boolean verif_number) {
         this.verif_number = verif_number;

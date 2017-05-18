@@ -3,6 +3,7 @@ package com.linkar.tn.services;
 
 
 import com.linkar.tn.Iservice.MembreIService;
+import com.linkar.tn.Iservice.NotificationIService;
 
 
 import com.linkar.tn.entities.Membre;
@@ -26,7 +27,7 @@ import java.util.logging.Logger;
  *
  * @author Rishya
  */
-public class NotificationServices {
+public class NotificationServices  implements NotificationIService{
     private Connection cnx;
     private PreparedStatement ps;
     private MembreServices membreService = new MembreServices();
@@ -307,11 +308,7 @@ public List<Notification>MonitorNotification(int id_membre,String type,int lastC
     return null;
 }
 
-
-
-
-
-int countNotificatdfdionByType(int id_membre,String type){
+public int countNotificatdfdionByType(int id_membre,String type){
     
     String req = "select count(id_member) from notification where id_member=? and type=?  ";
       

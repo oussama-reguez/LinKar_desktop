@@ -8,7 +8,7 @@ package com.linkar.tn.services;
 
 import com.linkar.tn.entities.Reclamation;
 
-import com.linkar.tn.Iservice.IReclamationService;
+import com.linkar.tn.Iservice.ReclamationIService;
 import com.linkar.tn.technics.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author Oussama Reguez
  */
-public class ReclamationService implements IReclamationService {
+public class ReclamationService implements ReclamationIService {
  private Connection cnx;
     public ReclamationService(){
          cnx=DataSource.getDataSource().getConnection();

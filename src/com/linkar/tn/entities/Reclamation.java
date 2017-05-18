@@ -20,10 +20,10 @@ public class Reclamation {
     
     private int id_reclamation;
     private Membre membre;
-    private SimpleStringProperty text;
-    private SimpleObjectProperty date_Reclamation ;
-    private SimpleStringProperty type;
-    private SimpleStringProperty subject;
+    private String text;
+    private Date date_Reclamation ;
+    private String type;
+    private String subject;
     private boolean marked ;
 
     public boolean isMarked() {
@@ -41,24 +41,44 @@ public class Reclamation {
         return "Reclamation{" + "id_reclamation=" + id_reclamation + ", membre=" + membre + ", text=" + text + ", date_Reclamation=" + date_Reclamation + ", type=" + type + ", subject=" + subject + '}';
     }
 
-  
+    public String getText() {
+        return text;
+    }
 
-    
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Date getDate_Reclamation() {
+        return date_Reclamation;
+    }
+
+    public void setDate_Reclamation(Date date_Reclamation) {
+        this.date_Reclamation = date_Reclamation;
+    }
+
     public String getType() {
-        return type.get();
+        return type;
     }
 
     public void setType(String type) {
-        this.type.set(type);
+        this.type = type;
     }
 
     public String getSubject() {
-        return subject.get();
+        return subject;
     }
 
     public void setSubject(String subject) {
-        this.subject.set( subject);
+        this.subject = subject;
     }
+
+  
+
+    
+  
+
+    
   
     
     
@@ -69,26 +89,37 @@ public class Reclamation {
     public Reclamation(int id_reclamation, Membre membre, String text, Date date_Reclamation) {
         this.id_reclamation = id_reclamation;
         this.membre = membre;
-        this.text =  new SimpleStringProperty(text);
-        this.date_Reclamation =  new SimpleObjectProperty(date_Reclamation);
+        this.text =  text;
+        this.date_Reclamation =  date_Reclamation;
     }
     
     public Reclamation(int id_reclamation, Membre membre, String text, Date date_Reclamation,String type,String subject) {
         this.id_reclamation = id_reclamation;
         this.membre = membre;
-         this.text =  new SimpleStringProperty(text);
-         this.date_Reclamation =  new SimpleObjectProperty(date_Reclamation);
-        this.type=new  SimpleStringProperty( type);
-        this.subject= new  SimpleStringProperty(subject);
+         this.text = text;
+         this.date_Reclamation = date_Reclamation;
+        this.type=type;
+        this.subject= subject;
+    }
+    
+     public Reclamation(int id_reclamation, Date date_reclamation, Membre M, String text,String subject,String type) {
+        this.id_reclamation = id_reclamation;
+        this.date_Reclamation= date_reclamation;
+       this.membre=M;
+        this.text = text;
+        this.subject = subject ;
+        this.type = type ;
+       // this.calend = Calendar.getInstance();
+       
     }
     
      public Reclamation(int id_reclamation, Membre membre, String text, Date date_Reclamation,String type,String subject,boolean marked) {
         this.id_reclamation = id_reclamation;
         this.membre = membre;
-         this.text =  new SimpleStringProperty(text);
-         this.date_Reclamation =  new SimpleObjectProperty(date_Reclamation);
-        this.type=new  SimpleStringProperty( type);
-        this.subject= new  SimpleStringProperty(subject);
+         this.text =  text;
+         this.date_Reclamation =  date_Reclamation;
+        this.type=type;
+        this.subject= subject;
          this.marked=marked;
     }
      
@@ -128,31 +159,10 @@ public class Reclamation {
     /**
      * @return the text
      */
-    public String getText() {
-        return text.get();
-    }
-
-    /**
-     * @param text the text to set
-     */
-    public void setText(String text) {
-        this.text.set(text);
-    }
+ 
 
     /**
      * @return the date_Reclamation
      */
-    public Date getDate_Reclamation() {
-        return (java.sql.Date)date_Reclamation.get();
-    }
-
-    /**
-     * @param date_Reclamation the date_Reclamation to set
-     */
-    public void setDate_Reclamation(Date date_Reclamation) {
-        this.date_Reclamation .set( date_Reclamation);
-    }
-    
-    
-    
+  
 }

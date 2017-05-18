@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
 
-<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.views.GestionCompteController">
+<StackPane id="AnchorPane" fx:id="stackPane" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.GestionCompteController">
    <children>
       <VBox prefHeight="50" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="50.0" prefWidth="600.0">
+            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="600.0">
                <children>
                   <JFXTextField fx:id="txtSearch" prefHeight="25.0" prefWidth="233.0">
                      <opaqueInsets>
@@ -44,13 +44,16 @@
                      </HBox.margin>
                   </JFXButton>
                </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
             </HBox>
             <VBox fx:id="vBox" prefHeight="400.0" prefWidth="600.0">
                <children>
                   <TableView fx:id="mTable" prefHeight="400.0" prefWidth="800.0" />
                </children></VBox>
-            <Button fx:id="btn" mnemonicParsing="false" onAction="#click" text="Button" />
+           
          </children>
       </VBox>
    </children>
-</AnchorPane>
+</StackPane>

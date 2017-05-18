@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane id="AnchorPane" maxHeight="1.7976931348623157E308" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkar.tn.controllers.StatController">
+   <children>
+       <JFXTabPane fx:id="tab">
+         <tabs>
+            <Tab text="Statistique pour les utilisateurs">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                         <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="1200.0">
+               <children>
+                  <HBox prefHeight="48.0" prefWidth="306.0">
+                     <children>
+                        <Label style="-fx-font-size: 20;" text="Nombre d'utilisateurs total :" />
+                        <Label fx:id="countUsers" style="-fx-font-size: 20;" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="48.0" prefWidth="343.0">
+                     <children>
+                        <Label style="-fx-font-size: 20;" text="Nombre d'utilisateurs bloqués:" />
+                        <Label fx:id="blockedUsers" style="-fx-font-size: 20;" text="Label" />
+                     </children>
+                  </HBox>
+               </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="800.0">
+               <children>
+                  <LineChart fx:id="totalUsersByDate" prefHeight="157.0" prefWidth="591.0">
+                    <xAxis>
+                      <CategoryAxis label="Mois" side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis label="Utilisateurs" side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <PieChart fx:id="pieChart" prefHeight="229.0" prefWidth="379.0" />
+               </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="800.0">
+               <children>
+                  <StackedBarChart fx:id="totalUsersByYear">
+                    <xAxis>
+                      <CategoryAxis label="Année" side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis label="Utilisateurs" side="LEFT" />
+                    </yAxis>
+                  </StackedBarChart>
+                                    <VBox alignment="TOP_CENTER" prefHeight="249.0" prefWidth="316.0">
+                                       <children>
+                                          <Label style="-fx-font-size: 20;" text="Les utilisateurs les plus actifs" />
+                        <TableView fx:id="table" prefHeight="219.0" prefWidth="231.0">
+                          <columns>
+                            <TableColumn fx:id="compteCol" prefWidth="163.0" text="Utilisateur" />
+                            <TableColumn fx:id="nbrAnnonceCol" prefWidth="145.0" text="Annonce" />
+                          </columns>
+                        </TableView>
+                                       </children>
+                                    </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+                         </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Statistique pour les annonces">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+         <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="600.0">
+                     <children>
+                        <Label style="-fx-font-size: 20;" text="Annonce total :" />
+                        <Label fx:id="countAnnonces" style="-fx-font-size: 20;" text="Label" />
+                     </children>
+                  </HBox>
+            <HBox fx:id="stacked" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <StackedAreaChart fx:id="stackedAreaChart">
+                    <xAxis>
+                                <NumberAxis animated="false" autoRanging="false" forceZeroInRange="true" label="Mois" lowerBound="1" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="LEFT" tickLabelGap="5.0" tickUnit="1.0" upperBound="12" />      
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis label="Annonces" side="LEFT" />
+                    </yAxis>
+                  </StackedAreaChart>
+                  <PieChart fx:id="categoriePieChart" />
+               </children>
+            </HBox>
+            <HBox prefHeight="250.0" prefWidth="200.0">
+               <children>
+                  <PieChart fx:id="pieDepart" />
+                  <PieChart fx:id="pieDestination" />
+               </children>
+            </HBox>
+         </children></VBox>
+   </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+       
+      
+   </children>
+</StackPane>

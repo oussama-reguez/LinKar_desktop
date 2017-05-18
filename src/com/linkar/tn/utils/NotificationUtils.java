@@ -24,8 +24,9 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
-import linkar_test.NewClass;
+
 import org.controlsfx.control.Notifications;
+import org.controlsfx.control.action.Action;
 
 /**
  *
@@ -149,7 +150,7 @@ public class NotificationUtils {
          try {
              Thread.sleep(1000);
          } catch (InterruptedException ex) {
-             Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
+            
          }
          // List<Notification> recentNotifications= serviceNotif.getRecentNotificaton(1, "all", 0);
           
@@ -231,13 +232,14 @@ public class NotificationUtils {
         Notifications.create()
               .title("Notification")
               .text(GenerateTextNotification(n)).graphic(iv)
+                
               .show();
           }
       
        String GenerateTextNotification(Notification n){
-         String msgMessage="vous envoie un message ";
-         String msgDemande="a envoye une demande";
-         String msgReclamation="a Deposer une reclamation ";
+          String msgMessage="vous a envoyé un message ";
+         String msgDemande="a envoyé une demande";
+         String msgReclamation="a deposé une reclamation ";
          String msgReponse="a accepté votre demande";
           String fullName= n.getSender().getFirst_name()+" "+n.getSender().getLast_name();
          if(n.getType().equals("demande")){
